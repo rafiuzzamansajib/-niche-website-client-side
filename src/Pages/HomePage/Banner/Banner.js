@@ -26,7 +26,7 @@ const Banner = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={12} md={6} >
-                    <img style={{ width: '450px',height: "425px" }} src={bg} alt="" />
+                    <img style={{ width: '300px',height: "300px",marginTop:"20px" }} src={bg} alt="" />
                 </Grid>
             </Grid>
         </Container>

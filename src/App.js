@@ -10,6 +10,7 @@ import Home from './Pages/HomePage/Home/Home';
 import Login from './Pages/LoginPage/Login/Login';
 import Register from './Pages/LoginPage/Register/Register';
 import Explores from './Pages/ExplorePage/Explores/Explores';
+import Dashboard from './Pages/DashBoardPage/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
               
             </PrivateRoute>
             <PrivateRoute path="/dashboard">
-              
+              <Dashboard></Dashboard>
             </PrivateRoute>
             <Route path="/explore">
               <Explores></Explores>

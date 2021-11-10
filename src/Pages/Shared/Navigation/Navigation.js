@@ -1,5 +1,4 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -7,42 +6,125 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import useAuth from '../../../hooks/useAuth';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
+import { styled, useTheme } from '@mui/material/styles';
+import MuiAppBar from '@mui/material/AppBar';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Drawer from '@mui/material/Drawer';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import ExploreIcon from '@mui/icons-material/Explore';
+import HomeIcon from '@mui/icons-material/Home';
+
+const drawerWidth = 240;
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== 'open',
+})(({ theme, open }) => ({
+  transition: theme.transitions.create(['margin', 'width'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: `${drawerWidth}px`,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
+
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+  justifyContent: 'flex-end',
+}));
 
 const Navigation = () => {
   const { user, logout } = useAuth();
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
     return (
         <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <AppBar position="static" open={open}>
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+          >
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Watch House
             </Typography>
-            <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/explore">
-                          <Button color="inherit">Explore</Button>
-                      </NavLink>
-            {
+            <Drawer
+                sx={{
+                  width: drawerWidth,
+                  flexShrink: 0,
+                  '& .MuiDrawer-paper': {
+                    width: drawerWidth,
+                    boxSizing: 'border-box',
+                  },
+                }}
+                variant="persistent"
+                anchor="left"
+                open={open}
+              >
+                <DrawerHeader>
+                  <IconButton onClick={handleDrawerClose}>
+                    {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                  </IconButton>
+                </DrawerHeader>
+                {
               user?.email ?
                   <Box>
-                      <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/dashboard">
-                          <Button color="inherit">Dashboard</Button>
+                        <IconButton
+                        size='small'
+                        color="inherit"
+                      >
+                        <AccountCircleTwoToneIcon />
+                        {user?.displayName}
+                      </IconButton>
+                      <br/>
+                      <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/dashboard">
+                          <Button color="inherit"><DashboardIcon/> Dashboard</Button>
                       </NavLink>
-                      <Button onClick={logout} color="inherit">Logout</Button>
                   </Box>
                   :
-                  <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/login">
-                      <Button color="inherit">Login</Button>
-                  </NavLink>
+                  ''
                     }
+                <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/explore">
+                          <Button color="inherit"> <ExploreIcon/>Explore</Button>
+                      </NavLink>
+                <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/home">
+                          <Button color="inherit"><HomeIcon/>Home</Button>
+                      </NavLink>
+              </Drawer>
+              {user?.email ?
+              <Button onClick={logout} color="inherit"> <LogoutIcon/>Logout</Button>
+              :
+              <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/login">
+              <Button color="inherit"><LoginIcon/> Login</Button>
+             </NavLink>
+            }
           </Toolbar>
         </AppBar>
       </Box>

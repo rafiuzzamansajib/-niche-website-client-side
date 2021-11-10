@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { Button, Container } from '@mui/material';
+import { Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Explore from '../Explore/Explore';
 import Navigation from '../../Shared/Navigation/Navigation';
-import { NavLink } from 'react-router-dom';
+
 
 const Explores = () => {
     const[explores,setExplores] = useState([]);
@@ -17,7 +17,7 @@ const Explores = () => {
     return (
         <>
         <Navigation></Navigation>
-        <Box sx={{ flexGrow: 1 ,mb:5}}>
+        <Box sx={{ flexGrow: 1 ,mb:5,mt:5}}>
         <Container>
             <Typography sx={{ fontWeight: 600, m: 5, color: 'success.main' }} variant="h4" component="div">
                 All Watches
@@ -31,9 +31,6 @@ const Explores = () => {
                 }
             
             </Grid>
-            <NavLink style={{ textDecoration: 'none', color: 'Black' }} to="/home"> 
-             <Button variant="outlined"> Back To Home</Button>
-            </NavLink>
         </Container>
     </Box>
         </>

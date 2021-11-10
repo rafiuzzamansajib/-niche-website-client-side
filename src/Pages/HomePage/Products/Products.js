@@ -17,7 +17,7 @@ const Products = () => {
         <Box sx={{ flexGrow: 1 }}>
             <Container>
                 <Typography sx={{ fontWeight: 600, m: 5, color: 'success.main' }} variant="h4" component="div">
-                    OUR SERVICES
+                    OUR PRODUCTS
                 </Typography>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {
