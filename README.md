@@ -1,7 +1,7 @@
 ## Welcome TO Watch House
 Live site link https://last-niche-products.web.app/
 ## Appbar
-Try to create unique navugation with drawer .Inside drawer user see explore and home button
+Try to create unique navigation with drawer .Inside drawer user see explore and home button
 ## Home
 home page contain Appbar , Banner ,Products,Contact and Footer component
 
