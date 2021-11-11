@@ -11,6 +11,7 @@ import Login from './Pages/LoginPage/Login/Login';
 import Register from './Pages/LoginPage/Register/Register';
 import Explores from './Pages/ExplorePage/Explores/Explores';
 import Dashboard from './Pages/DashBoardPage/Dashboard/Dashboard';
+import Orderplace from './Pages/Orderplace/Orderplace';
 
 function App() {
   return (
@@ -18,8 +19,8 @@ function App() {
         <AuthProvider>
         <Router>
           <Switch>
-            <PrivateRoute path="/products">
-              
+            <PrivateRoute path="/orderplace">
+              <Orderplace></Orderplace>
             </PrivateRoute>
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>

@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 const Explore = (props) => {
     const { name, description, img, price } = props.explore;
     return (
@@ -26,7 +27,8 @@ const Explore = (props) => {
                 <Typography variant="body2" color="text.secondary">
                    Price: {price}
                 </Typography>
-                <Button variant="outlined">Purchese</Button>
+                <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/orderplace">  <Button variant="outlined">Purchese</Button> 
+                </NavLink>
             </CardContent>
         </Card>
     </Grid>
