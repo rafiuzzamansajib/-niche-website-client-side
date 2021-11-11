@@ -5,7 +5,7 @@ import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import LogoutIcon from '@mui/icons-material/Logout';
-import List from '@mui/material/List';
+import HomeIcon from '@mui/icons-material/Home';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -48,6 +48,9 @@ function Dashboard(props) {
         <div>
             <Toolbar />
             <Divider />
+            <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/home">
+                          <Button color="inherit"><HomeIcon/>Home</Button>
+                      </NavLink> <br/>
                 <NavLink style={{ textDecoration: 'none', color: 'Black' }} to={`${url}`}><Button color="inherit">My Orders</Button></NavLink> <br/>
                 <NavLink style={{ textDecoration: 'none', color: 'Black' }} to={`${url}/addreview`}><Button color="inherit">Review</Button></NavLink> <br/>
                 <NavLink style={{ textDecoration: 'none', color: 'Black' }} to={`${url}/payment`}><Button color="inherit">Payment</Button></NavLink>

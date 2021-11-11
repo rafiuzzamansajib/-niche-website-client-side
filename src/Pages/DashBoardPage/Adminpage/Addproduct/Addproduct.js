@@ -12,7 +12,7 @@ const Addproduct = () => {
         axios.post('http://localhost:5000/watchs', data)
             .then(res => {
                 if (res.data.insertedId) {
-                    alert('added successfully');
+                    alert('Product added successfully');
                     reset();
                 }
             })
