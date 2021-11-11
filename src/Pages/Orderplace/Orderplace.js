@@ -7,12 +7,12 @@ import { Typography } from '@mui/material';
 import Navigation from '../Shared/Navigation/Navigation';
 
 
-const Orderplace = ({name}) => {
+const Orderplace = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { user } = useAuth();
 
     const onSubmit = data => {
-        axios.post('http://localhost:5000/orderplace', data)
+        axios.post('https://mighty-refuge-44928.herokuapp.com/orderplace', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Order Place successfully');

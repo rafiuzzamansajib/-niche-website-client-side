@@ -6,20 +6,16 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import LogoutIcon from '@mui/icons-material/Logout';
 import HomeIcon from '@mui/icons-material/Home';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import {
     Switch,
     Route,
-    Link,
     useRouteMatch,
     NavLink
 } from "react-router-dom";
+import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import { Button } from '@mui/material';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import useAuth from './../../../hooks/useAuth';
@@ -48,6 +44,12 @@ function Dashboard(props) {
         <div>
             <Toolbar />
             <Divider />
+            <IconButton
+            color="inherit"
+            size="small">
+                <AccountCircleTwoToneIcon />
+                        {user?.displayName}
+            </IconButton>
             <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/home">
                           <Button color="inherit"><HomeIcon/>Home</Button>
                       </NavLink> <br/>

@@ -5,13 +5,13 @@ import React, { useEffect, useState } from 'react';
 const Manageproducts = () => {
     const[manageproducts,setManageproducts] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/watchs')
+        fetch('https://mighty-refuge-44928.herokuapp.com/watchs')
         .then(res=>res.json())
         .then(data=>setManageproducts(data))
     },[])
 
     const handelDelete = id =>{
-        const url = `http://localhost:5000/watchs/${id}`;
+        const url = `https://mighty-refuge-44928.herokuapp.com/watchs/${id}`;
         fetch(url,{
             method:'DELETE'
         })

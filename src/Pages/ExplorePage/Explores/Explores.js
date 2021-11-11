@@ -10,7 +10,7 @@ import Navigation from '../../Shared/Navigation/Navigation';
 const Explores = () => {
     const[explores,setExplores] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/watchs')
+        fetch('https://mighty-refuge-44928.herokuapp.com/watchs')
         .then(res=>res.json())
         .then(data=>setExplores(data))
     },[])

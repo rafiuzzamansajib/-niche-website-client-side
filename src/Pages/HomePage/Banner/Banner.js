@@ -17,11 +17,11 @@ const Banner = () => {
                 <Grid item style={{ ...verticalCenter, textAlign: 'left' }} xs={12} md={6}>
                     <Box>
                         <Typography variant="h3" sx={{ color: 'black' }}>
-                            Your New Smile <br />
-                            Starts Here
+                            SEE DAILY TIME <br />
+                            WITH WATCH HOUSE
                         </Typography>
                         <Typography variant="h6" sx={{ my: 3, fontSize: 13, fontWeight: 300, color: 'black' }}>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil asperiores velit illum enim incidunt doloremque vitae impedit at accusantium tenetur.
+                        It is the time you have wasted for your rose that makes your rose so important
                         </Typography>
                     </Box>
                 </Grid>

@@ -9,7 +9,7 @@ const Addproduct = () => {
     const onSubmit = data => {
         console.log(data);
 
-        axios.post('http://localhost:5000/watchs', data)
+        axios.post('https://mighty-refuge-44928.herokuapp.com/watchs', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Product added successfully');

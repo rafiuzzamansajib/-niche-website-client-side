@@ -11,7 +11,7 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 const ManageAllorders = () => {
     const [allorders,setAllorders] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/orderplace')
+        fetch('https://mighty-refuge-44928.herokuapp.com/orderplace')
         .then(res=>res.json())
         .then(data=>setAllorders(data))
     },[])
