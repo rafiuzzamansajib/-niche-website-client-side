@@ -11,18 +11,27 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Button } from '@mui/material';
 
 const Myorders = () => {
-    const { user, token } = useAuth();
+    const { user } = useAuth();
     const [myorders, setMyorders] = useState([])
     useEffect(() => {
-        const url = `https://mighty-refuge-44928.herokuapp.com/orderplace?email=${user.emaill}`
-        fetch(url, {
-            headers: {
-                'authorization': `Bearer ${token}`
-            }
-        })
+        const url = `https://mighty-refuge-44928.herokuapp.com/orderplace/${user.email}`
+        fetch(url)
             .then(res => res.json())
             .then(data => setMyorders(data));
-    }, [user.email, token])
+    }, [user.email]);
+    
+    const handelDeleteMyorder = id =>{
+        const url = `https://mighty-refuge-44928.herokuapp.com/orderplace/${id}`;
+        fetch(url,{
+            method:'DELETE'
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            alert("Are Sure To Delete Oders")
+            const remaining = myorders.filter(myorder => myorder._id !== id);
+            setMyorders(remaining);
+        })
+    }
     return (
         <div>
         <TableContainer component={Paper}>
@@ -46,7 +55,7 @@ const Myorders = () => {
                             </TableCell>
                             <TableCell align="right">{row.date}</TableCell>
                             <TableCell align="right">{row.city}</TableCell>
-                            <TableCell align="right"><Button><DeleteIcon/></Button></TableCell>
+                            <TableCell align="right"><Button onClick={()=> handelDeleteMyorder(myorders._id)}><DeleteIcon/></Button></TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
